@@ -1,0 +1,58 @@
+
+#grad1 {
+    height: 1000px;
+    background-image: linear-gradient(to bottom right, rgb(115, 166, 241), rgb(127, 47, 218)); 
+}
+#mainbox {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10;
+    border-radius: 20px;
+    background-color:rgb(32, 28, 54);
+    opacity : 0.97;
+    color: aliceblue;
+}
+.flex-container {
+    display: flex;
+    bottom: 50px;
+    left:   50px;
+    position: absolute;
+}
+.div{
+    position: relative;
+}
+.flex-container > div {
+    width: 200px;
+    margin: 10px;
+    /* text-align: center; */
+    font-size: 28px;
+}
+#myProgress {
+    width: 100%;
+    background-color: rgb(8, 5, 5);
+}
+#myProgress2 {
+    width: 100%;
+    background-color: rgb(8, 5, 5);
+}
+#myBar {
+    width: 1%;
+    height: 8px;
+    border-radius: 5px;
+    background-color: rgb(104, 220, 224);
+}
+#myBar2 {
+    width: 1%;
+    height: 8px;
+    border-radius: 5px;
+    background-color: rgb(191, 106, 224);
+}
+
+#clip {
+    position: absolute;
+    overflow: hidden;
+    z-index: 11;
+}
