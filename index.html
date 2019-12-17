@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="mystyle.css">  
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">  
+    </head>
 <body id="grad1">
     <div id="mainbox">
         <div style="margin-top: 20px;">
@@ -48,42 +48,11 @@
                 <div id="myProgress2">
                     <div id="myBar2"></div>
                 </div>
-                <div style=" font-size: 14px;  display: block;">59 Clicks</div>
+                <div style=" font-size: 14px;  display: block;">37 Clicks</div>
             </div>
 
         </div>
-
-        <!-- image -->
-        <div id="clip" style="margin-left: 120px; ">
-            <img  src="waves.png" />
-        </div>
-        <!-- image end -->
-
-        <div style="margin-top: 70px;">
-            <div style="display: flex; margin-left:60px; margin-right:60px; flex-direction: column; opacity : 0.70;">
-                <div style="display: flex; flex-direction: row; margin-top: 50px;">
-                    <div style="margin-top: 10px;">100% </div>
-                    <div style=" width:100%; margin-right:20px;"> <hr>   </div>
-                </div>
-                <div style="display: flex; flex-direction: row; margin-top: 50px;">
-                    <div style="margin-top: 10px;">80% </div>
-                    <div style=" width:100%; margin-right:20px;"> <hr>   </div>
-                </div>
-                <div style="display: flex; flex-direction: row; margin-top: 50px;">
-                    <div style="margin-top: 10px;">60% </div>
-                    <div style=" width:100%; margin-right:20px;"> <hr>   </div>
-                </div>
-                <div style="display: flex; flex-direction: row; margin-top: 50px;">
-                    <div style="margin-top: 10px;">40% </div>
-                    <div style=" width:100%; margin-right:20px;"> <hr>   </div>
-                </div>
-                <div style="display: flex; flex-direction: row; margin-top: 50px;">
-                    <div style="margin-top: 10px;">20% </div>
-                    <div style=" width:100%; margin-right:20px;"> <hr>   </div>
-                </div>
-            </div>
-        </div>
-
+        <div id="chartContainer" style="height: 550px; width: 94%; margin-top: 105px; margin-left: 35px;"></div>
         <div class="flex-container">
             <div>1</div>
             <div>2</div>
@@ -105,9 +74,91 @@
 
     </div>
     <script>
+
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+      backgroundColor: "rgba(255, 255, 255, 0)",
+      color:"white",
+	title:{
+		// text: "Monthly Rate",
+        fontColor: "aliceblue"
+	},
+	axisY :{
+		includeZero: false,
+        gridColor: "#6A5ACD",
+				labelFontSize: 18,
+        labelFontColor: "white",
+		suffix: "%"
+	},
+    axisX:{
+				labelFontSize: 18,
+        gridColor: "#6A5ACD",
+        labelFontColor: "white"
+    },
+	legend: {
+		fontSize: 20,
+       fontColor: "white"
+    },
+    toolTip: {fontSize: 20,
+			backgroundColor: "rgba(255,255,255,1)"
+		},
+	data: [{
+        type: "splineArea",
+        fillOpacity:0.91,
+        color: "rgba(104, 220, 224,1)",
+		showInLegend: true,
+		name: "Open Rate",
+		yValueFormatString: "###",
+		xValueFormatString: "MMM YYYY",
+		dataPoints: [
+			{ x: new Date(2016, 2), y: 300 },
+			{ x: new Date(2016, 3), y: 350 },
+			{ x: new Date(2016, 4), y: 300 },
+			// { x: new Date(2016, 5), y: 304 },
+			{ x: new Date(2016, 6), y: 209 },
+			{ x: new Date(2016, 7), y: 310 },
+			// { x: new Date(2016, 8), y: 302 },
+			{ x: new Date(2016, 9), y: 300 },
+			{ x: new Date(2016, 10), y: 330 },
+			{ x: new Date(2016, 11), y: 380 },
+			{ x: new Date(2017, 0),  y: 389 },
+			{ x: new Date(2017, 1),  y: 390 }
+		]
+ 	},
+	{
+		type: "splineArea", 
+        fillOpacity:0.91,
+		showInLegend: true,
+        color: "rgb(191, 106, 224)",
+		name: "Click Rate",
+		yValueFormatString: "###",
+		dataPoints: [
+			{ x: new Date(2016, 2), y: 201 },
+			{ x: new Date(2016, 3), y: 160 },
+			{ x: new Date(2016, 4), y: 140 },
+			// { x: new Date(2016, 5), y: 180 },
+			{ x: new Date(2016, 6), y: 180 },
+			{ x: new Date(2016, 7), y: 210 },
+			// { x: new Date(2016, 8), y: 220 },
+			{ x: new Date(2016, 9), y: 250 },
+			{ x: new Date(2016, 10), y: 230 },
+			{ x: new Date(2016, 11), y: 250 },
+			{ x: new Date(2017, 0), y: 260 },
+			{ x: new Date(2017, 1), y: 250 }
+		]
+ 	}
+  ]
+});
+chart.render();
+
+}
+// chart end
+
         var elem = document.getElementById("myBar");   
         var width = 1;
-        var id = setInterval(frame, 10);
+        var id = setInterval(frame, 25);
         function frame() {
             if (width >= 59) {
             clearInterval(id);
@@ -118,7 +169,7 @@
         }
         var elem2 = document.getElementById("myBar2");   
         var width2 = 1;
-        var id2 = setInterval(frame2, 10);
+        var id2 = setInterval(frame2, 40);
         function frame2() {
             if (width2 >= 37) {
                 clearInterval(id2);
@@ -127,18 +178,8 @@
                 elem2.style.width = width2 + '%'; 
             }
         }
-        
-        var elem3 = document.getElementById("clip");   
-        var width3 = 1;
-        var id3 = setInterval(frame3, 10);
-        function frame3() {
-            if (width3 >= 100) {
-                clearInterval(id3);
-            } else {
-                width3++; 
-                elem3.style.width = width3 + '%';
-            }
-        }
+ 
     </script>
+    <script type="text/javascript" src="canvasjs.min.js"></script>
 </body>
 </html>
